@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {Navbar, Nav, Form, FormControl, Button} from 'react-bootstrap'
+import {Link} from "react-router-dom"
 
 export default function Navigation (props) {
   const [pokemonName, setPokemonName] = useState('')
@@ -11,9 +12,10 @@ export default function Navigation (props) {
 
   return (
     <Navbar style={{backgroundColor: "rgba(0, 0, 0, 0.3)"}} >
-      <Navbar.Brand href="#home" style={{color: "white"}}>Poke World</Navbar.Brand>
+      <Navbar.Brand style={{color: "white"}}>Poke World</Navbar.Brand>
       <Nav className="mr-auto" >
-        <Nav.Link href="#home" style={{color: "white"}}>All Pokemon</Nav.Link>
+        <Link to="/" style={{color: "white", marginLeft: "20px"}}>All Pokemon</Link>
+        <Link to="/collections" style={{color: "white", marginLeft: "25px"}}>My Collections</Link>
       </Nav>
       <Form inline>
         <FormControl type="text" placeholder="Search" className="mr-sm-2" value={pokemonName} onChange={(event) =>  onChangeSearch(event)}/>
