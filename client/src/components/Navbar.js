@@ -19,7 +19,7 @@ export default function Navigation (props) {
       </Nav>
       <Form inline>
         <FormControl type="text" placeholder="Search" className="mr-sm-2" value={pokemonName} onChange={(event) =>  onChangeSearch(event)}/>
-        <Button variant="outline-info">Search</Button>
+        <Button variant="outline-light">Search</Button>
       </Form>
     </Navbar>
   )
