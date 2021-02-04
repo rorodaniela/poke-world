@@ -1,24 +1,20 @@
 let initialPokemons = {
   pokemons: [],
   pokemon: {},
-  searchPokemon: "",
   loading: true,
   error: ""
 }
 
 function pokemonReducer(state = initialPokemons, action) {
-    // console.log(state.pokemon, "<<<<< pokemon dari reducer poke")
+  console.log(state, "<< ini dari pokemon reducer yg state nya");
   switch (action.type) {
     case "FETCH_POKEMONS":
-      return {...state, pokemons: state.pokemons.concat({
-        pokemons: action.pokemons
-      })}
-    case "DETAIL_POKEMON":
-      return {...state, pokemon: action.pokemon}
-    case "LOADING_STATUS":
-      return {...state, loading: action.loading}
+      return {...state, pokemons: action.pokemons, loading: false} // ini array
+    case "DETAIL_POKEMON": 
+      console.log(state.pokemon, "<<< ini pokemon dari reducer")
+      return {...state, pokemon: action.pokemon, loading: false} //ini objek
     case "ERROR_MESSAGE":
-      return {...state, error: action.error}
+      return {...state, error: action.error, loading: false}
     default:
       return state
   }

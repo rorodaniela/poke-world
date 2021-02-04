@@ -1,6 +1,9 @@
 export const addFavorite = (pokemon) => {
-  return {
-    type: "ADD_FAVORITE",
-    pokemon: pokemon
+  return (dispatch) => {
+    dispatch({
+      type: "ADD_FAVORITE",
+      pokemon: pokemon
+      }
+    ) 
   }
 }

@@ -3,6 +3,7 @@ import {Card, Col, Button} from "react-bootstrap"
 import{ useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import {addFavorite} from "../store/actions/favoriteAction"
+import Swal from "sweetalert2"
 
 export default function Content (props) {
   const history = useHistory()
@@ -14,6 +15,12 @@ export default function Content (props) {
 
   const handleFavorite = () => {
     dispatch(addFavorite(props.pokemon))
+    Swal.fire({
+      icon: 'success',
+      title: `${props.pokemon.name} has been add to your collections`,
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 
   return (

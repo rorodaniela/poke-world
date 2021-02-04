@@ -28,12 +28,7 @@
   100% { transform: rotate(360deg); }
 }
 
-.App #content {
-  margin-top: "0px";
-  overflow-y: "auto";
-  height: "665px";
-}
-
-.App #content::-webkit-scrollbar {
-    display: none;
+.App {
+  min-height: 100vh;
+  background-image: url("https://i.pinimg.com/originals/ca/fe/c2/cafec2809887a1c37c83d9ebbc953252.jpg");
 }

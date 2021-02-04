@@ -1,12 +1,18 @@
-import React from 'react'
-import { useParams } from "react-router-dom";
-import useFetch from "../hooks/useFetch"
+import React, {useEffect} from 'react'
+import { useDispatch, useSelector } from "react-redux"
+import{ useParams } from "react-router-dom"
 import { Container, Row, Image, Col, Table } from 'react-bootstrap'
 import ShowError from "../components/Error"
+import {fetchDetail} from "../store/actions/pokemonsAction"
 
 export default function DetailPokemon () {
   let { id } = useParams();
-  const {data: pokemon, loading, error} = useFetch(id)
+  const {pokemon, loading, error} = useSelector((state) => state.pokemonsRed)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchDetail(id))
+  }, [id])
 
   if (error) {
     return <ShowError></ShowError>
@@ -15,13 +21,18 @@ export default function DetailPokemon () {
       return <div className="loader" style={{marginRight: "auto", marginLeft: "auto", marginTop: "250px"}}></div>
 
   } else if (loading === false) {
-      const attack = pokemon.attacks.map(item => {
-        return item.name
-      })
+      let attack
+      let weakness
+      if (pokemon.attacks || pokemon.weaknesses) {
+        attack = pokemon.attacks.map(item => {
+          return item.name
+        })
 
-      const weakness = pokemon.weaknesses.map(item => {
-        return item.type
-      })
+        weakness = pokemon.weaknesses.map(item => {
+          return item.type
+        })
+      }
+
 
       return (
         <Container>

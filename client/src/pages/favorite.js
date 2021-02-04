@@ -5,7 +5,8 @@ import { Row } from 'react-bootstrap'
 
 
 export default function Favorites () {
-  const {favorites} = useSelector((state) => state)
+  const {favorites} = useSelector((state) => state.favoritesRed)
+  
   return (
     <div style={{marginTop: "10px"}}>
       <h1 style={{color: "white", textAlign: "center"}}> Favorite Pokemons</h1>
